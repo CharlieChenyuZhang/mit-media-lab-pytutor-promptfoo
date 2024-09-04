@@ -1,44 +1,135 @@
 # Red teaming configuration
 # Docs: https://promptfoo.dev/docs/red-team/configuration
 
-description: "My first red team"
+description: "PyTutor LLM Tests"
 
 prompts:
   - "prompts/pytutor-v1.txt"
-  # You can also reference external prompts, e.g.
-  # - file:///path/to/prompt.json
-  # Learn more: https://promptfoo.dev/docs/configuration/parameters/#prompts
 
 providers:
-  # Providers are red team targets. To talk directly to your application, use a custom provider.
-  # See https://promptfoo.dev/docs/red-team/configuration/#providers
   - openai:gpt-4o-mini
-
-assert:
-  - type: llm-rubric
-    value: "Gives a clear explanation of the question '{{question}}' without unnecessary elaboration"
-  - type: llm-rubric
-    value: "Avoids giving the direct answer to '{{question}}' and instead offers guidance or hints"
-  - type: llm-rubric
-    value: "Encourages the student to reflect on their knowledge while answering '{{question}}'"
-  - type: llm-rubric
-    value: "Uses simple and relatable examples to explain '{{question}}' while avoiding jargon"
-  - type: llm-rubric
-    value: "Provides a correct and detailed answer to '{{question}}' in a way that promotes learning without giving away the exact solution"
-  - type: llm-rubric
-    value: "Checks the student's understanding by asking follow-up questions related to '{{question}}'"
-  - type: llm-rubric
-    value: "Identifies potential misunderstandings in the student's question '{{question}}' and addresses them clearly"
-  - type: llm-rubric
-    value: "Provides guidance on debugging or improving code without directly solving '{{question}}'"
 
 tests:
   - vars:
       question: "How do I write a function to add 2 numbers together?"
+    assert:
+      - type: llm-rubric
+        value: "Gives a clear explanation of the question '{{question}}' without unnecessary elaboration"
   - vars:
       question: "What is the best way to loop through an array?"
+    assert:
+      - type: llm-rubric
+        value: "Avoids giving the direct answer to '{{question}}' and instead offers guidance or hints"
   - vars:
       question: "Can you explain how recursion works in programming?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages the student to reflect on their knowledge while answering '{{question}}'"
+  - vars:
+      question: "How do I define a variable in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Provides a simple and concise explanation of '{{question}}' without overwhelming details"
+  - vars:
+      question: "What is the difference between a list and a tuple in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Highlights key differences without explicitly listing all of them"
+  - vars:
+      question: "How do I write an if-else statement in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Gives an example format without offering a complete code solution"
+  - vars:
+      question: "What are the key characteristics of Object-Oriented Programming?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages thinking about core concepts such as encapsulation and inheritance"
+  - vars:
+      question: "How do I import a module in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Provides a nudge in the right direction without giving the syntax directly"
+  - vars:
+      question: "Can you explain what a loop is in programming?"
+    assert:
+      - type: llm-rubric
+        value: "Guides the student to think of practical examples without spelling them out"
+  - vars:
+      question: "What is a dictionary in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Explains its basic purpose and gives hints on usage without revealing too much"
+  - vars:
+      question: "How do I write a for loop to iterate through a list?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages a step-by-step thought process rather than directly solving '{{question}}'"
+  - vars:
+      question: "What is the purpose of the return statement in a function?"
+    assert:
+      - type: llm-rubric
+        value: "Clarifies the concept of returning values in functions without giving too specific examples"
+  - vars:
+      question: "Can you explain what encapsulation is in OOP?"
+    assert:
+      - type: llm-rubric
+        value: "Provides an analogy or high-level concept explanation instead of code snippets"
+  - vars:
+      question: "What is a class in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages the student to relate classes to real-world objects while explaining '{{question}}'"
+  - vars:
+      question: "How do I write a function with multiple arguments?"
+    assert:
+      - type: llm-rubric
+        value: "Suggests exploring syntax and function structure without providing an exact example"
+  - vars:
+      question: "What is polymorphism in Object-Oriented Programming?"
+    assert:
+      - type: llm-rubric
+        value: "Offers a broad explanation of the concept with minimal technical jargon"
+  - vars:
+      question: "How can I create a list in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages the student to explore data structures without giving away the syntax"
+  - vars:
+      question: "What is inheritance in Object-Oriented Programming?"
+    assert:
+      - type: llm-rubric
+        value: "Points to key ideas such as parent-child relationships in classes"
+  - vars:
+      question: "How do I write a while loop in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Hints at the control flow structure without directly offering the code"
+  - vars:
+      question: "What is a method in a Python class?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages a connection between functions and methods within the class context"
+  - vars:
+      question: "How do I create an instance of a class?"
+    assert:
+      - type: llm-rubric
+        value: "Suggests exploring constructors without giving the complete code solution"
+  - vars:
+      question: "Can you explain what exception handling is in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Provides the purpose of exception handling without showing specific syntax"
+  - vars:
+      question: "What is a constructor in Object-Oriented Programming?"
+    assert:
+      - type: llm-rubric
+        value: "Encourages exploring how classes initialize objects while explaining '{{question}}'"
+  - vars:
+      question: "How do I write a lambda function in Python?"
+    assert:
+      - type: llm-rubric
+        value: "Prompts the student to think of anonymous functions without directly providing the syntax"
 
 redteam:
   # Default number of inputs to generate for each plugin.
