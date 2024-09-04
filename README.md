@@ -14,3 +14,7 @@ Read [here](https://www.promptfoo.dev/docs/guides/llm-redteaming/) for LLM readt
 
 Then, you will see a beautiful test tables like this.
 ![Tux, the Linux mascot](/assets/promptfoo-screenshot.png)
+
+## how do I modify / add more test cases
+
+Everything is in the file called `promptfooconfig.yaml` :)
